@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PowerBall</fullName>
+    <columns>RECORDTYPE</columns>
+    <columns>NAME</columns>
+    <columns>Number_1__c</columns>
+    <columns>Number_2__c</columns>
+    <columns>Number_3__c</columns>
+    <columns>Number_6__c</columns>
+    <columns>Number_5__c</columns>
+    <columns>Number_4__c</columns>
+    <columns>Number_7__c</columns>
+    <columns>PowerBall__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Lottery__c.PowerBall</value>
+    </filters>
+    <label>PowerBall</label>
+</ListView>
