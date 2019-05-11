@@ -12,7 +12,15 @@
                         </div>
                 </template>
 
+                <template for:each={luckBallNumbers} for:item="luckyBallNumber">
+                        <!-- //each should be a lightning layout item -->
+                        <div class="button-wrapper" key={luckyBallNumber}>
+                                <c-lucky-ball-button lucky-ball-number={luckyBallNumber}></c-lucky-ball-button>
+                        </div>
+                </template>
+
                 <p class="slds-m-top_medium clear-float"></p>
                 <lightning-button label="Reset" onclick={handleReset}></lightning-button>
+                <lightning-button label="Get Lucky" onclick={handleGenerator}></lightning-button>
         </lightning-card>
 </template>

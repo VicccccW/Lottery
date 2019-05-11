@@ -5,7 +5,8 @@ export default class OzLottoGenerator extends LightningElement {
     //figure why cannot use @api
     @track exclusion = [];
     @track inclusion = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
-    ballNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
+    @track luckBallNumbers = ["1", "2", "3", "4", "5", "6", "7"];
+    ballNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]; //data comes from apex 
 
     //TODO:
     checkType(event) {
@@ -22,11 +23,20 @@ export default class OzLottoGenerator extends LightningElement {
         //reset property
         this.inclusion = this.ballNumbers;
         this.exclusion = [];
+        this.luckBallNumber = [];
 
+        //reset button
         const buttons = this.template.querySelectorAll('c-ball-button');
         buttons.forEach(button => {
             button.handleReset();
         });
+
+        //reset generated balls
+
+    }
+
+    handleGenerator() {
+        console.log("in generator");
     }
 
     addBallHandler(event) {

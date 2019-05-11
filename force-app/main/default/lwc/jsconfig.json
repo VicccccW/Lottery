@@ -8,6 +8,9 @@
             ],
             "c/ozLottoGenerator": [
                 "ozLottoGenerator/ozLottoGenerator.js"
+            ],
+            "c/luckyBallButton": [
+                "luckyBallButton/luckyBallButton.js"
             ]
         }
     },
