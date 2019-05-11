@@ -1,26 +1,36 @@
 <template>
         <lightning-card title="HelloWorld" icon-name="custom:custom14">
                 <lightning-input name="Draw Number" label="Draw Number" required value={drawNumber} placeholder="enter a number" onchange={checkType} minlength="4" maxlength="4" ></lightning-input>
-                <p>
-                Number want to exclude?
-                </p>
+                
+                <p>Number want to exclude?</p>
 
-                <template for:each={ballNumbers} for:item="ballNumber">
-                        <!-- //each should be a lightning layout item -->
-                        <div class="button-wrapper" key={ballNumber}>
-                                <c-ball-button ball-number={ballNumber} onaddball={addBallHandler} onremoveball={removeBallHandler}></c-ball-button>
-                        </div>
-                </template>
-
-                <template for:each={luckBallNumbers} for:item="luckyBallNumber">
-                        <!-- //each should be a lightning layout item -->
-                        <div class="button-wrapper" key={luckyBallNumber}>
-                                <c-lucky-ball-button lucky-ball-number={luckyBallNumber}></c-lucky-ball-button>
-                        </div>
-                </template>
+                <lightning-layout multiple-rows>
+                        <template for:each={allBalls} for:item="ball">
+                                <lightning-layout-item size="1" padding="around-small" key={ball}>
+                                        <div class="button-wrapper" >
+                                                <c-ball-button ball={ball} onaddball={addBallHandler} onremoveball={removeBallHandler}></c-ball-button>
+                                        </div>
+                                </lightning-layout-item> 
+                        </template>
+                </lightning-layout>    
 
                 <p class="slds-m-top_medium clear-float"></p>
-                <lightning-button label="Reset" onclick={handleReset}></lightning-button>
-                <lightning-button label="Get Lucky" onclick={handleGenerator}></lightning-button>
+
+                <lightning-layout>
+                        <template for:each={luckyBalls} for:item="luckyBall">
+                                <lightning-layout-item size="1" padding="around-small" key={luckyBall}>
+                                        <div class="button-wrapper" >
+                                                <c-lucky-ball-button lucky-ball={luckyBall}></c-lucky-ball-button>
+                                        </div>
+                                </lightning-layout-item>
+                        </template>
+                </lightning-layout>
+
+                <p class="slds-m-top_medium clear-float"></p>
+
+                <div>
+                        <lightning-button label="Reset" onclick={handleReset}></lightning-button>
+                        <lightning-button label="Get Lucky" onclick={handleGenerator}></lightning-button>
+                </div>
         </lightning-card>
 </template>

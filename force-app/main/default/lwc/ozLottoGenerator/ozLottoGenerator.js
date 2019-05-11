@@ -2,11 +2,9 @@ import { LightningElement, track } from 'lwc';
 
 export default class OzLottoGenerator extends LightningElement {
     @track drawNumber;
-    //figure why cannot use @api
-    @track exclusion = [];
-    @track inclusion = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
-    @track luckBallNumbers = ["1", "2", "3", "4", "5", "6", "7"];
-    ballNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]; //data comes from apex 
+    @track ballPool = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+    @track luckyBalls = ["1", "2", "3", "4", "5", "6", "7"];
+    allBalls = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
 
     //TODO:
     checkType(event) {
@@ -21,9 +19,9 @@ export default class OzLottoGenerator extends LightningElement {
         inputElement.value = '';
 
         //reset property
-        this.inclusion = this.ballNumbers;
-        this.exclusion = [];
-        this.luckBallNumber = [];
+        this.ballPool = this.allBalls;
+        //this.exclusion = [];
+        this.luckBalls = [];
 
         //reset button
         const buttons = this.template.querySelectorAll('c-ball-button');
@@ -41,16 +39,22 @@ export default class OzLottoGenerator extends LightningElement {
 
     addBallHandler(event) {
         const buttonValue = event.detail;
-        this.inclusion.push(buttonValue);
-        //this.exclusion = this.inclusion.filter(element => !this.ballNumbers.includes(element));
-        this.exclusion.splice(this.exclusion.indexOf(buttonValue),1);
+
+        if(!this.ballPool.includesp(buttonValue)) {
+            this.ballPool.push(buttonValue);
+
+            console.log("ballPool -->" + this.ballPool);
+        }
+        //this.exclusion = this.ballPool.filter(element => !this.allBalls.includes(element));
     }
 
     removeBallHandler(event) {
         const buttonValue = event.detail;
-        this.exclusion.push(buttonValue);
-        //this.inclusion = this.exclusion.filter(element => !this.ballNumbers.includes(element));
-        this.inclusion.splice(this.inclusion.indexOf(buttonValue),1);
 
+        if(this.ballPool.includes(buttonValue)){
+            this.ballPool.splice(this.ballPool.indexOf(buttonValue),1);
+
+            console.log("ballPool -->" + this.ballPool);
+        }
     }
 }
