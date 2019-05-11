@@ -17,13 +17,13 @@ export default class BallButton extends LightningElement {
       }
    }
 
-   // @api 
-   // handleReset() {
-   //    const button = this.template.querySelector('button');
+   @api 
+   handleReset() {
+      const button = this.template.querySelector('button');
 
-   //    if(button.classList.contains("slds-button_neutral")) {
-   //       button.classList.remove("slds-button_neutral");
-   //       button.classList.add("slds-button_brand");
-   //    }
-   // }
+      if(button.classList.contains("slds-button_neutral")) {
+         button.classList.remove("slds-button_neutral");
+         button.classList.add("slds-button_brand");
+      }
+   }
 }

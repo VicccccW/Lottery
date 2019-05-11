@@ -5,7 +5,6 @@
                 Number want to exclude?
                 </p>
 
-
                 <template for:each={ballNumbers} for:item="ballNumber">
                         <!-- //each should be a lightning layout item -->
                         <div class="button-wrapper" key={ballNumber}>
@@ -13,9 +12,7 @@
                         </div>
                 </template>
 
-                <p class="slds-m-top_medium clear-float">Balls exclude: {exclusion}</p>
-                <p class="slds-m-top_medium">Balls include: {inclusion}</p>
+                <p class="slds-m-top_medium clear-float"></p>
                 <lightning-button label="Reset" onclick={handleReset}></lightning-button>
         </lightning-card>
-
 </template>
