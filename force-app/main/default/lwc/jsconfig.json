@@ -3,6 +3,9 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
+            "c/ballButton": [
+                "ballButton/ballButton.js"
+            ],
             "c/ozLottoGenerator": [
                 "ozLottoGenerator/ozLottoGenerator.js"
             ]
