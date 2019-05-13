@@ -6,6 +6,12 @@ div.button-wrapper {
     text-align: center;
 }
 
+div.center {
+    text-align: center;
+}
+
 p.clear-float {
     clear: both;
 }
+
+

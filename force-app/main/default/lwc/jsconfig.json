@@ -6,11 +6,11 @@
             "c/ballButton": [
                 "ballButton/ballButton.js"
             ],
-            "c/ozLottoGenerator": [
-                "ozLottoGenerator/ozLottoGenerator.js"
-            ],
             "c/luckyBallButton": [
                 "luckyBallButton/luckyBallButton.js"
+            ],
+            "c/ozLottoGenerator": [
+                "ozLottoGenerator/ozLottoGenerator.js"
             ]
         }
     },

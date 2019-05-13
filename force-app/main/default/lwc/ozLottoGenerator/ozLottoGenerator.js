@@ -34,7 +34,20 @@ export default class OzLottoGenerator extends LightningElement {
     }
 
     handleGenerator() {
-        console.log("in generator");
+        if(this.ballPool.length() > 6) {
+            this.luckBalls = [];
+            
+            if() {
+                this.luckBalls.push(this.ballPool.getRandomIndex());
+            }
+        } else {
+            console.log("generator error");
+        }
+    }
+
+    //error handling, if null/ undefined
+    getRandomIndex() {
+        return Math.floor(Math.random() * this.ballPool.length());
     }
 
     addBallHandler(event) {
