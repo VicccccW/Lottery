@@ -8,6 +8,11 @@
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Ball_Pool__c.Ball_Number__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lottery__c.Number_1__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -57,6 +62,17 @@
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
+        <layout>Ball_Pool__c-Ball Pool Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Ball_Pool__c-Ball Pool Layout</layout>
+        <recordType>Ball_Pool__c.OZ_Lotto</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Ball_Pool__c-Ball Pool Layout</layout>
+        <recordType>Ball_Pool__c.PowerBall</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Lottery__c-Lottery Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -73,9 +89,28 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
+        <object>Ball_Pool__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>Lottery__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Ball_Pool__c.OZ_Lotto</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Ball_Pool__c.PowerBall</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Lottery__c.OZ_Lotto</recordType>
@@ -86,6 +121,10 @@
         <recordType>Lottery__c.PowerBall</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    <tabVisibilities>
+        <tab>Ball_Pool__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
     <tabVisibilities>
         <tab>Lottery_Generator</tab>
         <visibility>DefaultOn</visibility>
