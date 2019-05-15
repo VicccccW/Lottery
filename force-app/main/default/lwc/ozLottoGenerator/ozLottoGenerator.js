@@ -33,6 +33,10 @@ export default class OzLottoGenerator extends LightningElement {
         const inputElement = this.template.querySelector('lightning-input');
         inputElement.value = null;
 
+        console.log("handle reset allBalls 1----> " + this.allBalls);
+        console.log("handle reset ballPool 1----> " + this.ballPool);
+
+        
         //reset property
         getOZLottoBallList()
             .then(result => {
@@ -53,12 +57,15 @@ export default class OzLottoGenerator extends LightningElement {
     }
 
     handleGenerator() {
+        console.log("handle generator this.ballPool ----> " + this.ballPool);
+
         if(this.ballPool.length > 6) {
             this.luckyBalls = [];
 
             let indexArr = this.getRandomIndexArray(this.ballPool.length);
 
             indexArr.forEach(element => this.luckyBalls.push(this.ballPool[element]));
+            console.log("handle generator ----> " + this.luckyBalls);
         } else {
             console.log("handleGenerator error");
         }
@@ -86,6 +93,7 @@ export default class OzLottoGenerator extends LightningElement {
             this.ballPool.push(buttonValue);
         }
         //this.exclusion = this.ballPool.filter(element => !this.allBalls.includes(element));
+        console.log("ball pool is add" + this.ballPool);
     }
 
 
@@ -96,6 +104,7 @@ export default class OzLottoGenerator extends LightningElement {
         if(this.ballPool.includes(buttonValue)){
             this.ballPool.splice(this.ballPool.indexOf(buttonValue),1);
         }
+        console.log("ball pool is remove" + this.ballPool);
     }
 
     //TODO: css color yellow balls

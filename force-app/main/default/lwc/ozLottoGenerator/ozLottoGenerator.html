@@ -28,9 +28,9 @@
 
                 <lightning-layout>
                         <template for:each={luckyBalls} for:item="luckyBall">
-                                <lightning-layout-item size="1" padding="around-small" key={luckyBall.Id}>
+                                <lightning-layout-item size="1" padding="around-small" key={luckyBall}>
                                         <div class="button-wrapper" >
-                                                <c-lucky-ball-button lucky-ball={luckyBall.Name}></c-lucky-ball-button>
+                                                <c-lucky-ball-button lucky-ball={luckyBall}></c-lucky-ball-button>
                                         </div>
                                 </lightning-layout-item>
                         </template>
@@ -38,8 +38,17 @@
 
                 <p class="slds-m-top_medium clear-float"></p>
 
-                <div class="center">
-                        <lightning-button label="Get Lucky" onclick={handleGenerator}></lightning-button>
-                </div>
+                <lightning-layout>
+                        <lightning-layout-item padding="around-small" size="6">
+                                <div class="center">
+                                        <lightning-button label="Get Lucky" onclick={handleGenerator}></lightning-button>
+                                </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small" size="6">
+                                <div class="center">
+                                        <lightning-button label="Save It!"></lightning-button>
+                                </div>
+                        </lightning-layout-item>
+                </lightning-layout>
         </lightning-card>
 </template>
