@@ -1,11 +1,23 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
+import getOZLottoBallList from '@salesforce/apex/BallPoolController.getOZLottoBallList';
 
 export default class OzLottoGenerator extends LightningElement {
     @track drawNumber;
-    @track ballPool = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+    @track allBalls;
+    @track error;
+    @track ballPool = ["1", "2", "3", "4", "5", "6", "7"];
     @track luckyBalls = []; //TODO: add if ture, false in html
-    allBalls = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
-    //allBalls retrieve from Salesforce apex
+
+    @wire(getOZLottoBallList)
+    wiredBallPool({ error, data }) {
+        if (data) {
+            this.allBalls = data;
+            this.error = undefined;
+        } else if (error) {
+            this.allBalls = undefined;
+            this.error = error;
+        }
+    }
 
     //TODO:
     checkType(event) {
@@ -18,11 +30,16 @@ export default class OzLottoGenerator extends LightningElement {
     handleReset() {
         //clear input field 
         const inputElement = this.template.querySelector('lightning-input');
-        inputElement.value = '';
+        inputElement.value = null;
 
         //reset property
-        this.ballPool = this.allBalls;
-        this.luckyBalls = [];
+        getOZLottoBallList()
+            .then(result => {
+                this.allBalls = result;
+            })
+            .catch(error => {
+                this.error = error;
+            })
 
         //reset button
         const buttons = this.template.querySelectorAll('c-ball-button');
@@ -30,6 +47,7 @@ export default class OzLottoGenerator extends LightningElement {
     }
 
     handleGenerator() {
+        
         if(this.ballPool.length > 6) {
             this.luckyBalls = [];
 
@@ -63,6 +81,7 @@ export default class OzLottoGenerator extends LightningElement {
             this.ballPool.push(buttonValue);
         }
         //this.exclusion = this.ballPool.filter(element => !this.allBalls.includes(element));
+        console.log("ball pool is add" + this.ballPool);
     }
 
 
@@ -73,6 +92,7 @@ export default class OzLottoGenerator extends LightningElement {
         if(this.ballPool.includes(buttonValue)){
             this.ballPool.splice(this.ballPool.indexOf(buttonValue),1);
         }
+        console.log("ball pool is remove" + this.ballPool);
     }
 
     //TODO: logic for 2 complementry balls

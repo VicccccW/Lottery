@@ -16,9 +16,9 @@
 
                 <lightning-layout multiple-rows>
                         <template for:each={allBalls} for:item="ball">
-                                <lightning-layout-item size="1" padding="around-small" key={ball}>
+                                <lightning-layout-item size="1" padding="around-small" key={ball.Id}>
                                         <div class="button-wrapper" >
-                                                <c-ball-button ball={ball} onaddball={addBallHandler} onremoveball={removeBallHandler}></c-ball-button>
+                                                <c-ball-button ball={ball.Name} onaddball={addBallHandler} onremoveball={removeBallHandler}></c-ball-button>
                                         </div>
                                 </lightning-layout-item> 
                         </template>
