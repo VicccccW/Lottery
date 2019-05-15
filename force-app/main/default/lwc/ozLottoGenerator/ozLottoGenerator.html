@@ -28,9 +28,9 @@
 
                 <lightning-layout>
                         <template for:each={luckyBalls} for:item="luckyBall">
-                                <lightning-layout-item size="1" padding="around-small" key={luckyBall}>
+                                <lightning-layout-item size="1" padding="around-small" key={luckyBall.Id}>
                                         <div class="button-wrapper" >
-                                                <c-lucky-ball-button lucky-ball={luckyBall}></c-lucky-ball-button>
+                                                <c-lucky-ball-button lucky-ball={luckyBall.Name}></c-lucky-ball-button>
                                         </div>
                                 </lightning-layout-item>
                         </template>
