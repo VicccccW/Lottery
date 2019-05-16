@@ -113,4 +113,14 @@ export default class OzLottoGenerator extends LightningElement {
 
     //TODO: similar to OUA's component, a collaspe
 
+    //TODO: new component, search for draw and display the numbers and complementray numbers in the side panel
+
+    //TODO: a component displaying past 10 draws statistics, numbers appearing and number never appear in these draws 
+
+    //TODO: a button to allow user enter a specific range of the data lake, like a 滑动条， apex will get the data and render
+
+    //a custom object to store the saved value of the generated balls
+
+
+
 }

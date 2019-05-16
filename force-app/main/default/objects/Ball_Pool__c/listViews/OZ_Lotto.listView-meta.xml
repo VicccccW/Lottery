@@ -2,6 +2,7 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>OZ_Lotto</fullName>
     <columns>Ball_Number__c</columns>
+    <columns>NAME</columns>
     <columns>RECORDTYPE</columns>
     <filterScope>Everything</filterScope>
     <filters>
