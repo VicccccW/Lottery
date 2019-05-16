@@ -15,24 +15,30 @@
                 <p>Number want to exclude?</p>
 
                 <lightning-layout multiple-rows>
-                        <template for:each={allBalls} for:item="ball">
+                        <template if:true={allBalls} for:each={allBalls} for:item="ball">
                                 <lightning-layout-item size="1" padding="around-small" key={ball.Id}>
                                         <div class="button-wrapper" >
                                                 <c-ball-button ball={ball.Name} onaddball={addBallHandler} onremoveball={removeBallHandler}></c-ball-button>
                                         </div>
                                 </lightning-layout-item> 
                         </template>
+                        <template if:false={allBalls}>
+                                <p>ERROR! No Balls in System. Please chceck Salesforce.</p>
+                        </template>
                 </lightning-layout>    
 
                 <p class="slds-m-top_medium clear-float"></p>
 
                 <lightning-layout>
-                        <template for:each={luckyBalls} for:item="luckyBall">
+                        <template if:true={luckyBalls} for:each={luckyBalls} for:item="luckyBall">
                                 <lightning-layout-item size="1" padding="around-small" key={luckyBall}>
                                         <div class="button-wrapper" >
                                                 <c-lucky-ball-button lucky-ball={luckyBall}></c-lucky-ball-button>
                                         </div>
                                 </lightning-layout-item>
+                        </template>
+                        <template if:false={luckyBalls}>
+                                <p>ERROR! Generate Lucky Ball Error.</p>
                         </template>
                 </lightning-layout>
 

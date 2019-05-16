@@ -2,6 +2,7 @@ import { LightningElement, api } from 'lwc';
 
 export default class BallButton extends LightningElement {
    @api ball;
+   @api ballPoolLength;
 
    handleToggleClick() {
       const button = this.template.querySelector('button');

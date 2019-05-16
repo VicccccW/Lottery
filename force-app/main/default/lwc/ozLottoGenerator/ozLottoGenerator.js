@@ -2,11 +2,12 @@ import { LightningElement, track, wire } from 'lwc';
 import getOZLottoBallList from '@salesforce/apex/BallPoolController.getOZLottoBallList';
 
 export default class OzLottoGenerator extends LightningElement {
-    @track drawNumber = [];
-    @track allBalls = [];
+    @track drawNumber = []; //store string number 
+    @track allBalls = []; //store promise object
     @track error;
-    @track ballPool = [];
-    @track luckyBalls = []; //TODO: add if ture, false in html
+    @track ballPool = []; //store number string
+    @track luckyBalls = []; //store number string
+    @track ballPoolLength = ballPool.length; //used in child button components 
 
     @wire(getOZLottoBallList)
     wiredBallPool({ error, data }) {
@@ -33,10 +34,6 @@ export default class OzLottoGenerator extends LightningElement {
         const inputElement = this.template.querySelector('lightning-input');
         inputElement.value = null;
 
-        console.log("handle reset allBalls 1----> " + this.allBalls);
-        console.log("handle reset ballPool 1----> " + this.ballPool);
-
-        
         //reset property
         getOZLottoBallList()
             .then(result => {
@@ -57,15 +54,12 @@ export default class OzLottoGenerator extends LightningElement {
     }
 
     handleGenerator() {
-        console.log("handle generator this.ballPool ----> " + this.ballPool);
-
         if(this.ballPool.length > 6) {
             this.luckyBalls = [];
 
             let indexArr = this.getRandomIndexArray(this.ballPool.length);
 
             indexArr.forEach(element => this.luckyBalls.push(this.ballPool[element]));
-            console.log("handle generator ----> " + this.luckyBalls);
         } else {
             console.log("handleGenerator error");
         }
@@ -93,19 +87,24 @@ export default class OzLottoGenerator extends LightningElement {
             this.ballPool.push(buttonValue);
         }
         //this.exclusion = this.ballPool.filter(element => !this.allBalls.includes(element));
-        console.log("ball pool is add" + this.ballPool);
     }
 
 
     //TODO: if there is only 7 button left, prevent user from remove more button.
     removeBallHandler(event) {
-        const buttonValue = event.detail;
 
-        if(this.ballPool.includes(buttonValue)){
-            this.ballPool.splice(this.ballPool.indexOf(buttonValue),1);
+        if(this.ballPool.length > 6) {
+            const buttonValue = event.detail;
+
+            if(this.ballPool.includes(buttonValue)){
+                this.ballPool.splice(this.ballPool.indexOf(buttonValue),1);
+            }
+        } else {
+            console.log("Ball Pool is less than 7.");
         }
-        console.log("ball pool is remove" + this.ballPool);
     }
+
+    //change the style of the number want to exclude slogan style
 
     //TODO: css color yellow balls
 
@@ -120,6 +119,14 @@ export default class OzLottoGenerator extends LightningElement {
     //TODO: a button to allow user enter a specific range of the data lake, like a 滑动条， apex will get the data and render
 
     //a custom object to store the saved value of the generated balls
+
+    //a aws database to store the value 
+
+    //a api for allow to retrieve the value 
+
+    //a salesforce method to get these value for external database, upsert, scheduled once a week
+
+    //a refresh button to impretatively call the apex callout and update the data and front end
 
 
 
